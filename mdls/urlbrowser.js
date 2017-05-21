@@ -12,15 +12,17 @@ var _ = function(app, p) {
 				
 				//var $ = azbn.mdl('web/http').parse(body);
 				
+				var _path = 'sites/' + res.href.host + app.mdl('urlanal').getPathname(href);
+				
+				app.mkDataDir(_path);
+				
 				if(error) {
 					
 					cb(error);
 					
+					app.saveFile(_path + '/' + '.error', JSON.stringify(error));
+					
 				} else {
-					
-					var _path = 'sites/' + res.href.host + app.mdl('urlanal').getPathname(href);
-					
-					app.mkDataDir(_path);
 					
 					app.saveFile(_path + '/' + '.content', body);
 					
