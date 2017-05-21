@@ -16,15 +16,19 @@ var _ = function(app, p) {
 				
 				app.mkDataDir(_path);
 				
+				var _ft = azbn.formattime();
+				
+				app.saveFile(_path + '/' + _ft + '.' + response.statusCode + '.headers', JSON.stringify(response.headers));
+				
 				if(error) {
 					
 					cb(error);
 					
-					app.saveFile(_path + '/' + '.error', JSON.stringify(error));
+					app.saveFile(_path + '/' + _ft + '.error', JSON.stringify(error));
 					
 				} else {
 					
-					app.saveFile(_path + '/' + '.content', body);
+					app.saveFile(_path + '/' + _ft + '.' + response.statusCode + '.content', body);
 					
 					cb(null, response, body);
 					
