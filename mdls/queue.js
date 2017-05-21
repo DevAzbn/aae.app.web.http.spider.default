@@ -75,15 +75,18 @@ var _ = function(app, p) {
 						$('a').each(function(index){
 							
 							//console.log($(this).attr('href'));
+							var a__href = $(this).attr('href');
 							
-							app.mdl('urlanal').getFullLink($(this).attr('href'), href, function(_href, _res){
-								
-								ctrl.add({
-									href : _href,
-									source : href,
+							if(a__href && a__href != '') {
+								app.mdl('urlanal').getFullLink($(this).attr('href'), href, function(_href, _res){
+									
+									ctrl.add({
+										href : _href,
+										source : href,
+									});
+									
 								});
-								
-							});
+							}
 							
 						});
 						
