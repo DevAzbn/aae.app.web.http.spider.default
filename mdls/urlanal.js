@@ -53,7 +53,7 @@ var _ = function(app, p) {
 				// абсолютный путь на сайте
 				//app.azbn.echo('абсолютный путь на сайте');
 				
-				var _href = res.source.protocol + '//' + res.source.host + href;
+				var _href = url.resolve(res.source.protocol + '//' + res.source.host, href);
 				
 				res.href = url.parse(_href);
 				
@@ -64,7 +64,7 @@ var _ = function(app, p) {
 				// абсолютный путь без протокола
 				//app.azbn.echo('абсолютный путь без протокола');
 				
-				var _href = res.source.protocol + href;
+				var _href = url.resolve(res.source.protocol, href);
 				
 				res.href = url.parse(_href);
 				
@@ -89,7 +89,7 @@ var _ = function(app, p) {
 					
 					//app.azbn.echo('источник ссылки - папка');
 					
-					var _href = res.source.protocol + '//' + res.source.host + res.source.pathname + href;
+					var _href = url.resolve(res.source.protocol + '//' + res.source.host + res.source.pathname, href);
 					
 					res.href = url.parse(_href);
 					
@@ -109,7 +109,7 @@ var _ = function(app, p) {
 					
 					//app.azbn.echo('источник ссылки - файл-сосед');
 					
-					var _href = res.source.protocol + '//' + res.source.host + _dir + '/' + href;
+					var _href = url.resolve(res.source.protocol + '//' + res.source.host + _dir + '/', href);
 					
 					res.href = url.parse(_href);
 					

@@ -76,9 +76,13 @@ var _ = function(app, p) {
 							
 							//console.log($(this).attr('href'));
 							
-							ctrl.add({
-								href : $(this).attr('href'),
-								source : href,
+							app.mdl('urlanal').getFullLink($(this).attr('href'), href, function(_href, _res){
+								
+								ctrl.add({
+									href : _href,
+									source : href,
+								});
+								
 							});
 							
 						});
