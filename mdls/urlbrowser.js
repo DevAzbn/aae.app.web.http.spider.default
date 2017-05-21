@@ -18,17 +18,29 @@ var _ = function(app, p) {
 				
 				var _ft = azbn.formattime();
 				
-				app.saveFile(_path + '/' + _ft + '.' + response.statusCode + '.headers', JSON.stringify(response.headers));
+				var _statusCode = 0;
+				
+				if(response) {
+					
+					_statusCode = response.statusCode || 0;
+					
+					if(response.headers) {
+						
+						app.saveJSON(_path + '/headers.' + _ft, response.headers);
+						
+					}
+					
+				}
 				
 				if(error) {
 					
 					cb(error);
 					
-					app.saveFile(_path + '/' + _ft + '.error', JSON.stringify(error));
+					app.saveJSON(_path + '/error.' + _ft, error);
 					
 				} else {
 					
-					app.saveFile(_path + '/' + _ft + '.' + response.statusCode + '.content', body);
+					app.saveFile(_path + '/body.' + _ft + '.html', body);
 					
 					cb(null, response, body);
 					
