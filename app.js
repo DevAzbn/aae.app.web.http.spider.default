@@ -12,7 +12,8 @@ app.mdl('queue').add({
 	href : argv.href,
 	source : '',
 });
-setInterval(app.mdl('queue').next, 1000);
+
+setInterval(app.mdl('queue').next, 777);
 //app.mdl('queue').next();
 
 //azbn.setMdl('config', require('./config/main'));

@@ -40,7 +40,7 @@ var _ = function(app, p) {
 					
 				} else {
 					
-					app.saveFile(_path + '/body.' + _ft + '.html', body);
+					app.saveFile(_path + '/body.' + _ft + '.html', body);//'.html' app.mdl('urlanal').getExt(href)
 					
 					cb(null, response, body);
 					

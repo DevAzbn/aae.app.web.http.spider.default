@@ -128,6 +128,25 @@ var _ = function(app, p) {
 			return _href.pathname;
 			
 		},
+
+		getBasename : function(href) {
+
+			return path.basename(ctrl.getPathname(href));
+
+		},
+
+		getExt : function(href) {
+
+			var parsed = path.parse(ctrl.getBasename(href));
+
+			parsed.ext = parsed.ext || '.html';
+			if(parsed.ext == '') {
+				parsed.ext = '.html';
+			}
+
+			return parsed.ext;
+
+		},
 		
 	};
 	
